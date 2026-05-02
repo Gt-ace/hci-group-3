@@ -6,7 +6,7 @@ const SEED = [
   ["Amelia", 95], ["Benjamin", 99], ["Arthur", 110], ["Mehmet", 115],
   ["Sonja", 135], ["Günther", 145], ["Keanu", 155], ["Olivia", 165],
   ["Emma", 175], ["Liam", 177], ["Noah", 185], ["Elijah", 192],
-  ["Emma", 198], ["Asher", 205], ["Luca", 212], ["James", 220],
+  ["Yuki", 198], ["Asher", 205], ["Luca", 212], ["James", 220],
   ["Sarah", 228], ["Lisa", 235], ["Richard", 244], ["Michael", 255],
 ];
 

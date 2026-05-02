@@ -3,7 +3,7 @@ import { openModal, closeModal, bindCloseOnBackdrop } from "./modals.js";
 
 function renderLeaderboard() {
   const list = document.getElementById("leaderboard");
-  const board = getLeaderboard().slice(0, 10);
+  const board = getLeaderboard();
   list.innerHTML = board.map((entry, i) => {
     const rank = `${i + 1}.`;
     const time = formatTime(entry.time);
