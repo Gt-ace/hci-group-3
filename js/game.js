@@ -2,12 +2,11 @@ import { createTimer } from "./timer.js";
 import { attachDrag } from "./drag.js";
 import { openModal, closeModal, bindCloseOnBackdrop } from "./modals.js";
 import { insertScore, getGamertag, saveRun, formatTime } from "./store.js";
-import { renderThumbnail } from "./model-viewer.js";
 
 const ROUNDS = [
   {
     id: 1,
-    fallback: "assets/images/helm_gelb.svg",
+    thumb: "assets/images/helm_gelb.svg",
     correctTarget: "modern",
     model: "assets/models/helm_gelb.usdz",
     info: {
@@ -21,7 +20,7 @@ const ROUNDS = [
   },
   {
     id: 2,
-    fallback: "assets/images/feuerwehrhelm.svg",
+    thumb: "assets/images/feuerwehrhelm.svg",
     correctTarget: "vintage",
     model: "assets/models/feuerwehrhelm.usdz",
     info: {
@@ -35,7 +34,7 @@ const ROUNDS = [
   },
   {
     id: 3,
-    fallback: "assets/images/gasmaske.svg",
+    thumb: "assets/images/gasmaske.svg",
     correctTarget: "third",
     model: "assets/models/gasmaske.usdz",
     info: {
@@ -48,21 +47,6 @@ const ROUNDS = [
     },
   },
 ];
-
-// Pre-render thumbnails from the actual USDZ models.
-const thumbCache = {};
-async function getThumb(round) {
-  if (thumbCache[round.id]) return thumbCache[round.id];
-  try {
-    thumbCache[round.id] = await renderThumbnail(round.model, 320);
-  } catch (e) {
-    console.warn("thumb render failed for", round.model, e);
-    thumbCache[round.id] = round.fallback;
-  }
-  return thumbCache[round.id];
-}
-// Warm cache for all 3 rounds in parallel.
-ROUNDS.forEach(getThumb);
 
 const timerEl = document.getElementById("timer");
 const draggable = document.getElementById("draggable");
@@ -78,10 +62,10 @@ let placedNode = null;
 const timer = createTimer((sec) => { timerEl.textContent = formatTime(sec); });
 timer.start();
 
-async function loadRound(idx) {
+function loadRound(idx) {
   currentRound = idx;
   const round = ROUNDS[idx];
-  dragThumb.src = await getThumb(round);
+  dragThumb.src = round.thumb;
   draggable.style.display = "";
   draggable.style.left = "";
   draggable.style.top = "";
@@ -109,10 +93,9 @@ function onDrop(hit) {
   placeOnTarget(hit.el, round);
 }
 
-async function placeOnTarget(targetEl, round) {
+function placeOnTarget(targetEl, round) {
   draggable.style.display = "none";
   dock.style.display = "none";
-  const thumb = await getThumb(round);
   const placed = document.createElement("div");
   placed.className = "placed-item";
   const targetRect = targetEl.getBoundingClientRect();
@@ -123,7 +106,7 @@ async function placeOnTarget(targetEl, round) {
   placed.style.top = `${top}px`;
   placed.style.width = `${targetRect.width * 0.8}px`;
   placed.innerHTML = `
-    <img src="${thumb}" alt="" style="width:100%;display:block;">
+    <img src="${round.thumb}" alt="" style="width:100%;display:block;">
     <button class="placed-item__info-btn" id="info-btn">
       <span style="font-family:Georgia,serif;font-style:italic;font-weight:900;color:#fff;font-size:18px;">i</span>
     </button>`;

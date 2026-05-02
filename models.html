@@ -8,14 +8,6 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/game.css">
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-      }
-    }
-  </script>
 </head>
 <body>
   <main class="page">
@@ -26,11 +18,13 @@
 
     <section class="page-content">
       <h1 style="text-align:center;font-size:24px;margin-bottom:8px;">AR Showroom</h1>
-      <p class="tagline" style="margin-bottom:18px;">Drehe das Modell mit dem Finger. Tippe „In AR ansehen" für AR Quick Look (iOS Safari).</p>
+      <p class="tagline" style="margin-bottom:18px;">Tippe ein Modell an, um es in deinem Raum in AR zu sehen (iPhone Safari).</p>
 
       <div class="models-grid">
         <article class="model-card">
-          <div class="model-card__viewer" data-model="assets/models/helm_gelb.usdz" data-fallback="assets/images/helm_gelb.svg"></div>
+          <a rel="ar" href="assets/models/helm_gelb.usdz" class="model-card__poster-link">
+            <div class="model-card__poster"><img src="assets/images/helm_gelb.svg" alt="Vorschau Helm Gelb" style="width:65%;"></div>
+          </a>
           <div class="model-card__body">
             <h2 class="model-card__title">Helm Gelb (Bullard R330)</h2>
             <p class="model-card__desc">Moderner deutscher Feuerwehrhelm aus hitzebeständigem Kunststoff.</p>
@@ -42,7 +36,9 @@
         </article>
 
         <article class="model-card">
-          <div class="model-card__viewer" data-model="assets/models/feuerwehrhelm.usdz" data-fallback="assets/images/feuerwehrhelm.svg"></div>
+          <a rel="ar" href="assets/models/feuerwehrhelm.usdz" class="model-card__poster-link">
+            <div class="model-card__poster"><img src="assets/images/feuerwehrhelm.svg" alt="Vorschau Feuerwehrhelm" style="width:65%;"></div>
+          </a>
           <div class="model-card__body">
             <h2 class="model-card__title">Historischer Feuerwehrhelm</h2>
             <p class="model-card__desc">Lederhelm mit Messingbeschlägen aus dem späten 19. Jahrhundert.</p>
@@ -54,7 +50,9 @@
         </article>
 
         <article class="model-card">
-          <div class="model-card__viewer" data-model="assets/models/gasmaske.usdz" data-fallback="assets/images/gasmaske.svg"></div>
+          <a rel="ar" href="assets/models/gasmaske.usdz" class="model-card__poster-link">
+            <div class="model-card__poster"><img src="assets/images/gasmaske.svg" alt="Vorschau Atemschutzmaske" style="width:55%;"></div>
+          </a>
           <div class="model-card__body">
             <h2 class="model-card__title">Atemschutzmaske</h2>
             <p class="model-card__desc">Vollmaske mit Polycarbonat-Sichtscheibe und Doppelfilter.</p>
@@ -69,7 +67,5 @@
       <a href="index.html" class="text-link">Zurück zum Startbildschirm</a>
     </section>
   </main>
-
-  <script type="module" src="js/models.js"></script>
 </body>
 </html>
