@@ -39,7 +39,7 @@
 }
 
 .page-actions {
-  padding: 16px 20px 28px;
+  padding: 16px 20px max(40px, calc(20px + env(safe-area-inset-bottom)));
 }
 
 .page-actions .btn-primary {

@@ -6,7 +6,7 @@ import { insertScore, getGamertag, saveRun, formatTime } from "./store.js";
 const ROUNDS = [
   {
     id: 1,
-    thumb: "assets/images/helm_gelb.svg",
+    thumb: "assets/images/helm_gelb.png",
     correctTarget: "modern",
     model: "assets/models/helm_gelb.usdz",
     info: {
@@ -20,7 +20,7 @@ const ROUNDS = [
   },
   {
     id: 2,
-    thumb: "assets/images/feuerwehrhelm.svg",
+    thumb: "assets/images/feuerwehrhelm.png",
     correctTarget: "vintage",
     model: "assets/models/feuerwehrhelm.usdz",
     info: {
@@ -100,11 +100,12 @@ function placeOnTarget(targetEl, round) {
   placed.className = "placed-item";
   const targetRect = targetEl.getBoundingClientRect();
   const sceneRect = scene.getBoundingClientRect();
-  const left = targetRect.left - sceneRect.left + targetRect.width * 0.5 - targetRect.width * 0.4;
-  const top = targetRect.top - sceneRect.top - 24;
+  const w = targetRect.width * 0.9;
+  const left = targetRect.left - sceneRect.left + (targetRect.width - w) / 2;
+  const top = targetRect.top - sceneRect.top - w * 0.7;
   placed.style.left = `${left}px`;
   placed.style.top = `${top}px`;
-  placed.style.width = `${targetRect.width * 0.8}px`;
+  placed.style.width = `${w}px`;
   placed.innerHTML = `
     <img src="${round.thumb}" alt="" style="width:100%;display:block;">
     <button class="placed-item__info-btn" id="info-btn">
