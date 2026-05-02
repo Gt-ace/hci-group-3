@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2a2a2a">
+  <title>FIREHELM — Spiel</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <main class="page game-shell">
+    <header class="brand-header">
+      <img src="assets/icons/logo.svg" alt="" class="brand-header__logo">
+      <div class="brand-header__wordmark"><span class="fire">FIRE</span><span class="helm">HELM</span></div>
+    </header>
+
+    <div class="game-hud">
+      <div class="timer-chip">
+        <img src="assets/icons/alarm.svg" alt="" class="timer-chip__icon">
+        <span id="timer">0:00</span>
+      </div>
+      <button class="exit-btn" id="exit-btn">
+        <img src="assets/icons/exit.svg" alt="" style="width:22px;height:22px;">
+        <span>EXIT</span>
+      </button>
+    </div>
+
+    <div class="scene" id="scene" style="background-image:url('assets/images/scene-bg.svg');">
+      <div class="firefighter" data-id="third">
+        <img src="assets/images/firefighter-third.svg" alt="" class="firefighter__sprite">
+      </div>
+      <div class="firefighter" data-id="vintage">
+        <img src="assets/images/firefighter-vintage.svg" alt="" class="firefighter__sprite">
+      </div>
+      <div class="firefighter" data-id="modern">
+        <img src="assets/images/firefighter-modern.svg" alt="" class="firefighter__sprite">
+      </div>
+      <div class="korrekt-banner" id="korrekt" hidden>KORREKT</div>
+    </div>
+
+    <div class="dock" id="dock">
+      <div class="dock__caption">Ziehe den Helm zum richtigen<br>Feuerwehrmann!</div>
+      <div class="draggable" id="draggable">
+        <img id="drag-thumb" src="assets/images/helm_gelb.svg" alt="">
+      </div>
+    </div>
+
+    <div class="weiter-bar" id="weiter-bar" hidden>
+      <button class="btn-primary" id="weiter-btn">WEITER</button>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="infobox" hidden>
+    <div class="infobox">
+      <h2 id="info-title"></h2>
+      <dl id="info-rows"></dl>
+      <a id="info-ar" rel="ar" href="" class="ar-cta">
+        <img src="" alt="" style="display:none;">
+        In AR ansehen
+      </a>
+      <button class="btn-secondary" style="width:100%;margin-top:12px;font-size:15px;padding:10px;" onclick="document.getElementById('infobox').hidden=true;">Schließen</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="leave-modal" hidden>
+    <div class="modal">
+      <h2>Willst du das Spiel<br>wirklich abbrechen?</h2>
+      <div class="modal-actions">
+        <button class="btn-primary" id="leave-confirm">BESTÄTIGEN</button>
+        <button class="btn-secondary" id="leave-cancel">ABBRECHEN</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 360">
+  <ellipse cx="100" cy="80" rx="38" ry="42" fill="#f4d6b3"/>
+  <path d="M62 70c2-22 16-38 38-38s36 16 38 38" fill="#3a3a3a"/>
+  <rect x="60" y="120" width="80" height="180" rx="10" fill="#5e6b73"/>
+  <rect x="55" y="160" width="90" height="14" fill="#facc15"/>
+  <rect x="55" y="240" width="90" height="14" fill="#facc15"/>
+  <rect x="40" y="125" width="22" height="100" rx="6" fill="#5e6b73"/>
+  <rect x="138" y="125" width="22" height="100" rx="6" fill="#5e6b73"/>
+  <rect x="68" y="300" width="28" height="55" fill="#3a3a3a"/>
+  <rect x="104" y="300" width="28" height="55" fill="#3a3a3a"/>
+  <text x="100" y="200" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">RESCUE</text>
+</svg>

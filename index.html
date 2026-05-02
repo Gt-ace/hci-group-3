@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2a2a2a">
+  <title>FIREHELM</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <main class="page">
+    <header class="brand-header">
+      <img src="assets/icons/logo.svg" alt="" class="brand-header__logo">
+      <div class="brand-header__wordmark"><span class="fire">FIRE</span><span class="helm">HELM</span></div>
+    </header>
+
+    <section class="page-content">
+      <div class="leaderboard">
+        <h1>Leaderboard&nbsp;🏆</h1>
+        <p class="tagline">Die 20 schnellsten Spielzeiten aller Spieler</p>
+        <ol class="leaderboard__list" id="leaderboard"></ol>
+        <p class="tagline-strong">Werde der Schnellste!</p>
+      </div>
+    </section>
+
+    <div class="page-actions">
+      <button class="btn-primary" id="start-btn">START</button>
+      <a href="models.html" class="text-link">Modelle in AR ansehen</a>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="gamertag-modal" hidden>
+    <div class="modal">
+      <h2>Gamertag eingeben:</h2>
+      <input type="text" id="gamertag-input" placeholder="Eingabe" autocomplete="off" maxlength="16">
+      <div class="modal-actions">
+        <button class="btn-primary" id="gamertag-confirm" style="font-size:18px;">START</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>
