@@ -22,6 +22,7 @@ export function createTimer(onTick) {
       elapsedSec = Math.floor((performance.now() - startMs) / 1000);
       return elapsedSec;
     },
+    addPenalty(ms) { startMs -= ms; tick(); },
     get elapsed() { return elapsedSec; },
   };
 }

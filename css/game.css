@@ -298,6 +298,25 @@
 
 .korrekt-banner[hidden] { display: none; }
 
+.penalty-banner {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(239, 68, 68, 0.92);
+  color: #fff;
+  padding: 10px 32px;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 18px rgba(239, 68, 68, 0.45);
+  z-index: 6;
+  animation: korrekt-pop 0.32s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.penalty-banner[hidden] { display: none; }
+
 .weiter-bar {
   background: var(--surface);
   padding: 14px 20px max(40px, calc(20px + env(safe-area-inset-bottom)));

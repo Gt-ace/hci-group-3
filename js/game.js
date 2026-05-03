@@ -34,7 +34,7 @@ const ROUNDS = [
   },
   {
     id: 3,
-    thumb: "assets/images/gasmaske.svg",
+    thumb: "assets/images/gasmaske.jpeg",
     correctTarget: "third",
     model: "assets/models/gasmaske.usdz",
     info: {
@@ -53,6 +53,7 @@ const draggable = document.getElementById("draggable");
 const dragThumb = document.getElementById("drag-thumb");
 const scene = document.getElementById("scene");
 const korrekt = document.getElementById("korrekt");
+const penaltyBanner = document.getElementById("penalty");
 const weiterBar = document.getElementById("weiter-bar");
 const dock = document.getElementById("dock");
 
@@ -88,6 +89,12 @@ function onDrop(hit) {
   if (hit.id !== round.correctTarget) {
     draggable.classList.add("shake");
     setTimeout(() => draggable.classList.remove("shake"), 350);
+    timer.addPenalty(5000);
+    penaltyBanner.hidden = false;
+    penaltyBanner.style.animation = "none";
+    void penaltyBanner.offsetWidth;
+    penaltyBanner.style.animation = "";
+    setTimeout(() => { penaltyBanner.hidden = true; }, 1200);
     return;
   }
   placeOnTarget(hit.el, round);
