@@ -34,7 +34,7 @@ const ROUNDS = [
   },
   {
     id: 3,
-    thumb: "assets/images/gasmaske.jpeg",
+    thumb: "assets/images/gasmaske.png",
     correctTarget: "third",
     model: "assets/models/gasmaske.usdz",
     info: {
