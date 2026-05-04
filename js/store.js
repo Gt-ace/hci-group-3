@@ -13,7 +13,19 @@ const SEED = [
 export function getLeaderboard() {
   const raw = localStorage.getItem(LB_KEY);
   if (raw) {
-    try { return JSON.parse(raw); } catch {}
+    try {
+      const parsed = JSON.parse(raw);
+      // Deduplicate: keep only the best time per name
+      const best = new Map();
+      for (const e of parsed) {
+        if (!best.has(e.name) || e.time < best.get(e.name).time) best.set(e.name, e);
+      }
+      const deduped = [...best.values()].sort((a, b) => a.time - b.time).slice(0, 20);
+      if (deduped.length !== parsed.length) {
+        localStorage.setItem(LB_KEY, JSON.stringify(deduped));
+      }
+      return deduped;
+    } catch {}
   }
   const seed = SEED.map(([name, time]) => ({ name, time, seeded: true }));
   localStorage.setItem(LB_KEY, JSON.stringify(seed));
@@ -21,7 +33,10 @@ export function getLeaderboard() {
 }
 
 export function insertScore(name, time) {
-  const board = getLeaderboard();
+  const raw = localStorage.getItem(LB_KEY);
+  let board = [];
+  if (raw) { try { board = JSON.parse(raw); } catch {} }
+  board = board.filter(e => e.name !== name);
   const entry = { name, time, you: true };
   board.push(entry);
   board.sort((a, b) => a.time - b.time);
